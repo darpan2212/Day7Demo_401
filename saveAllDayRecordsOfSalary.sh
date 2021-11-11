@@ -23,8 +23,8 @@ wagePerHour=20;
 totalSalary=0;
 totalWorkingHour=0
 
-day=1;
-while [[ $day -le 20 && $totalWorkingHour -lt 40 ]]
+day=0;
+while [[ $day -lt 20 && $totalWorkingHour -lt 40 ]]
 do
 	wHour=$( calculateWorkingHour $((RANDOM%3)) );
 	totalWorkingHour=$(($totalWorkingHour + $wHour ));
@@ -36,8 +36,11 @@ do
 	fi
 
 	salary=$(( $wagePerHour * $wHour ));
+	perDaySalary[$day]=$salary;
 	totalSalary=$(($totalSalary + $salary));
 	((day++));
 done
 
 echo "Employee as earned $totalSalary$ in a month (Total working hour : $totalWorkingHour)";
+
+echo ${perDaySalary[@]};
