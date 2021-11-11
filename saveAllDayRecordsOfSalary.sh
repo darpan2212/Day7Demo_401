@@ -43,4 +43,7 @@ done
 
 echo "Employee as earned $totalSalary$ in a month (Total working hour : $totalWorkingHour)";
 
-echo ${perDaySalary[@]};
+for ((cnt=0;cnt<${#perDaySalary[@]};cnt++))
+do
+	echo 'Day '$(($cnt+1)) ' = ' ${perDaySalary[$cnt]};
+done
